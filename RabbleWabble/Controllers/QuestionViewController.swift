@@ -10,4 +10,3 @@ import UIKit
 public class QuestionViewController: UIViewController {
 
 }
-
