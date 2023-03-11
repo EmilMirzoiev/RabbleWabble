@@ -9,7 +9,11 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
-    public var questionGroup = QuestionGroup.basicPhrases()
+    public var questionGroup: QuestionGroup! {
+      didSet {
+        navigationItem.title = questionGroup.title
+      }
+    }
     public var questionIndex = 0
     public var correctCount = 0
     public var incorrectCount = 0
@@ -17,6 +21,15 @@ class QuestionViewController: UIViewController {
         guard isViewLoaded else { return nil }
         return (view as! QuestionView)
     }
+    private lazy var questionIndexItem: UIBarButtonItem = {
+      let item = UIBarButtonItem(title: "",
+                                 style: .plain,
+                                 target: nil,
+                                 action: nil)
+      item.tintColor = .black
+      navigationItem.rightBarButtonItem = item
+      return item
+    }()
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +42,8 @@ class QuestionViewController: UIViewController {
         questionView.hintLabel.text = question.hint
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
+        questionIndexItem.title = "\(questionIndex + 1)/" +
+        "\(questionGroup.questions.count)"
     }
     
     @IBAction func toggleAnswerLabels(_ sender: Any) {
