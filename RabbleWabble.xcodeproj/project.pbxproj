@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		207F31F929BC7846002E3470 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 207F31F829BC7846002E3470 /* QuestionViewController.swift */; };
 		20E66A0F29BB4F66001A63E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A0E29BB4F66001A63E8 /* AppDelegate.swift */; };
 		20E66A1129BB4F66001A63E8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A1029BB4F66001A63E8 /* SceneDelegate.swift */; };
-		20E66A1329BB4F66001A63E8 /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A1229BB4F66001A63E8 /* QuestionViewController.swift */; };
 		20E66A1629BB4F66001A63E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E66A1429BB4F66001A63E8 /* Main.storyboard */; };
-		20E66A1829BB4F67001A63E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E66A1729BB4F67001A63E8 /* Assets.xcassets */; };
-		20E66A1B29BB4F67001A63E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E66A1929BB4F67001A63E8 /* LaunchScreen.storyboard */; };
 		20E66A2629BB4F67001A63E8 /* RabbleWabbleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A2529BB4F67001A63E8 /* RabbleWabbleTests.swift */; };
 		20E66A3029BB4F67001A63E8 /* RabbleWabbleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A2F29BB4F67001A63E8 /* RabbleWabbleUITests.swift */; };
 		20E66A3229BB4F67001A63E8 /* RabbleWabbleUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A3129BB4F67001A63E8 /* RabbleWabbleUITestsLaunchTests.swift */; };
 		20E66A4429BB5DB9001A63E8 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A4329BB5DB9001A63E8 /* Question.swift */; };
 		20E66A4629BB5E02001A63E8 /* QuestionGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A4529BB5E02001A63E8 /* QuestionGroup.swift */; };
 		20E66A4829BB5FB6001A63E8 /* QuestionGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A4729BB5FB6001A63E8 /* QuestionGroupData.swift */; };
+		20E66A4A29BB643E001A63E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20E66A4929BB643E001A63E8 /* Assets.xcassets */; };
+		20E66A4C29BB6477001A63E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20E66A4B29BB6477001A63E8 /* LaunchScreen.storyboard */; };
+		20E66A4E29BB6545001A63E8 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E66A4D29BB6545001A63E8 /* QuestionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		207F31F829BC7846002E3470 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		20E66A0B29BB4F66001A63E8 /* RabbleWabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RabbleWabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E66A0E29BB4F66001A63E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20E66A1029BB4F66001A63E8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		20E66A1229BB4F66001A63E8 /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		20E66A1529BB4F66001A63E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		20E66A1729BB4F67001A63E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		20E66A1A29BB4F67001A63E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20E66A1C29BB4F67001A63E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20E66A2129BB4F67001A63E8 /* RabbleWabbleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RabbleWabbleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20E66A2529BB4F67001A63E8 /* RabbleWabbleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RabbleWabbleTests.swift; sourceTree = "<group>"; };
@@ -55,6 +54,9 @@
 		20E66A4329BB5DB9001A63E8 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		20E66A4529BB5E02001A63E8 /* QuestionGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroup.swift; sourceTree = "<group>"; };
 		20E66A4729BB5FB6001A63E8 /* QuestionGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionGroupData.swift; sourceTree = "<group>"; };
+		20E66A4929BB643E001A63E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		20E66A4B29BB6477001A63E8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		20E66A4D29BB6545001A63E8 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,7 +145,7 @@
 		20E66A3F29BB5BF4001A63E8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				20E66A1229BB4F66001A63E8 /* QuestionViewController.swift */,
+				207F31F829BC7846002E3470 /* QuestionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -161,7 +163,7 @@
 		20E66A4129BB5C02001A63E8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				20E66A1729BB4F67001A63E8 /* Assets.xcassets */,
+				20E66A4929BB643E001A63E8 /* Assets.xcassets */,
 				20E66A1C29BB4F67001A63E8 /* Info.plist */,
 			);
 			path = Resources;
@@ -171,7 +173,8 @@
 			isa = PBXGroup;
 			children = (
 				20E66A1429BB4F66001A63E8 /* Main.storyboard */,
-				20E66A1929BB4F67001A63E8 /* LaunchScreen.storyboard */,
+				20E66A4B29BB6477001A63E8 /* LaunchScreen.storyboard */,
+				20E66A4D29BB6545001A63E8 /* QuestionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,8 +283,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E66A1B29BB4F67001A63E8 /* LaunchScreen.storyboard in Resources */,
-				20E66A1829BB4F67001A63E8 /* Assets.xcassets in Resources */,
+				20E66A4C29BB6477001A63E8 /* LaunchScreen.storyboard in Resources */,
+				20E66A4A29BB643E001A63E8 /* Assets.xcassets in Resources */,
 				20E66A1629BB4F66001A63E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,9 +310,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20E66A1329BB4F66001A63E8 /* QuestionViewController.swift in Sources */,
 				20E66A4429BB5DB9001A63E8 /* Question.swift in Sources */,
 				20E66A0F29BB4F66001A63E8 /* AppDelegate.swift in Sources */,
+				207F31F929BC7846002E3470 /* QuestionViewController.swift in Sources */,
+				20E66A4E29BB6545001A63E8 /* QuestionView.swift in Sources */,
 				20E66A4829BB5FB6001A63E8 /* QuestionGroupData.swift in Sources */,
 				20E66A4629BB5E02001A63E8 /* QuestionGroup.swift in Sources */,
 				20E66A1129BB4F66001A63E8 /* SceneDelegate.swift in Sources */,
@@ -355,14 +359,6 @@
 				20E66A1529BB4F66001A63E8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		20E66A1929BB4F67001A63E8 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				20E66A1A29BB4F67001A63E8 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
