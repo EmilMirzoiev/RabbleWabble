@@ -9,7 +9,6 @@ import UIKit
 
 class QuestionViewController: UIViewController {
     
-    // MARK: - Instance Properties
     public var questionGroup = QuestionGroup.basicPhrases()
     public var questionIndex = 0
     public var correctCount = 0
@@ -19,7 +18,6 @@ class QuestionViewController: UIViewController {
         return (view as! QuestionView)
     }
     
-    // MARK: - View Lifecycle
     public override func viewDidLoad() {
         super.viewDidLoad()
         showQuestion()
@@ -55,10 +53,7 @@ class QuestionViewController: UIViewController {
     // 3
     private func showNextQuestion() {
         questionIndex += 1
-        guard questionIndex < questionGroup.questions.count else {
-            endQuiz()
-            return
-        }
+        guard questionIndex < questionGroup.questions.count else { endQuiz(); return }
         showQuestion()
     }
     
@@ -86,5 +81,4 @@ class QuestionViewController: UIViewController {
         correctCountLabel?.text = "0"
         incorrectCountLabel?.text = "0"
     }
-    
 }
