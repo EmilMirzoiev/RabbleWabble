@@ -9,9 +9,12 @@ import UIKit
 
 protocol QuestionViewControllerDelegate: AnyObject {
     // Would be called when the user presses the Cancel button.
-    func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int)
+    func questionViewController(_ viewController: QuestionViewController,
+                                didCancel questionGroup: QuestionGroup,
+                                at questionIndex: Int)
     // Would be called when the user completes all of the questions.
-    func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup)
+    func questionViewController(_ viewController: QuestionViewController,
+                                didComplete questionGroup: QuestionGroup)
 }
 
 class QuestionViewController: UIViewController {
@@ -102,7 +105,9 @@ class QuestionViewController: UIViewController {
     
     private func endQuiz() {
         delegate?.questionViewController(self, didComplete: questionGroup)
-        let alertController = UIAlertController(title: "Quiz Complete", message: "You have answered all the questions in the quiz", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Quiz Complete",
+                                                message: "You have answered all the questions in the quiz",
+                                                preferredStyle: .alert)
         let restartAction = UIAlertAction(title: "Restart Quiz", style: .default) { [weak self] action in
             self?.questionIndex = 0
             self?.correctCount = 0
