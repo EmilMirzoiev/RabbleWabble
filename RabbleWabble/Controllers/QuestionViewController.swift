@@ -7,34 +7,62 @@
 
 import UIKit
 
+protocol QuestionViewControllerDelegate: class {
+    // Would be called when the user presses the Cancel button.
+    func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int)
+    // Would be called when the user completes all of the questions.
+    func questionViewController(_ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup)
+}
+
 class QuestionViewController: UIViewController {
     
+    public weak var delegate: QuestionViewControllerDelegate?
+    
     public var questionGroup: QuestionGroup! {
-      didSet {
-        navigationItem.title = questionGroup.title
-      }
+        didSet {
+            navigationItem.title = questionGroup.title
+        }
     }
+    
     public var questionIndex = 0
     public var correctCount = 0
     public var incorrectCount = 0
+    
     public var questionView: QuestionView! {
         guard isViewLoaded else { return nil }
         return (view as! QuestionView)
     }
+    
     private lazy var questionIndexItem: UIBarButtonItem = {
-      let item = UIBarButtonItem(title: "",
-                                 style: .plain,
-                                 target: nil,
-                                 action: nil)
-      item.tintColor = .black
-      navigationItem.rightBarButtonItem = item
-      return item
+        let item = UIBarButtonItem(title: "",
+                                   style: .plain,
+                                   target: nil,
+                                   action: nil)
+        item.tintColor = .black
+        navigationItem.rightBarButtonItem = item
+        return item
     }()
     
     public override func viewDidLoad() {
-        super.viewDidLoad()
-        showQuestion()
+      super.viewDidLoad()
+      setupCancelButton()
+      showQuestion()
     }
+    
+    private func setupCancelButton() {
+        let action = #selector(handleCancelPressed(sender:))
+        let image = UIImage(named: "ic_menu")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: image,
+                                                           landscapeImagePhone: nil,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: action)
+    }
+        
+    @objc private func handleCancelPressed(sender: UIBarButtonItem) {
+      delegate?.questionViewController(self, didCancel: questionGroup, at: questionIndex)
+    }
+    
     private func showQuestion() {
         let question = questionGroup.questions[questionIndex]
         questionView.answerLabel.text = question.answer
@@ -73,6 +101,7 @@ class QuestionViewController: UIViewController {
     }
     
     private func endQuiz() {
+        delegate?.questionViewController(self, didComplete: questionGroup)
         let alertController = UIAlertController(title: "Quiz Complete", message: "You have answered all the questions in the quiz", preferredStyle: .alert)
         let restartAction = UIAlertAction(title: "Restart Quiz", style: .default) { [weak self] action in
             self?.questionIndex = 0
@@ -97,3 +126,5 @@ class QuestionViewController: UIViewController {
         incorrectCountLabel?.text = "0"
     }
 }
+
+

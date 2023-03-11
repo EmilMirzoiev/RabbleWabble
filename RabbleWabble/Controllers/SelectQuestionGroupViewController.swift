@@ -22,15 +22,18 @@ public class SelectQuestionGroupViewController: UIViewController {
 
 // MARK: - UITableViewDataSource
 extension SelectQuestionGroupViewController: UITableViewDataSource {
+    
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questionGroups.count
     }
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionGroupCell") as! QuestionGroupCell
         let questionGroup = questionGroups[indexPath.row]
         cell.titleLabel.text = questionGroup.title
         return cell
     }
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -48,5 +51,20 @@ extension SelectQuestionGroupViewController: UITableViewDelegate {
     public override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? QuestionViewController else { return }
         viewController.questionGroup = selectedQuestionGroup
+        viewController.delegate = self
     }
+    
+}
+
+// MARK: - QuestionViewControllerDelegate
+extension SelectQuestionGroupViewController: QuestionViewControllerDelegate {
+    
+    func questionViewController( _ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int) {
+        navigationController?.popToViewController(self, animated: true)
+    }
+    
+    func questionViewController( _ viewController: QuestionViewController, didComplete questionGroup: QuestionGroup) {
+        navigationController?.popToViewController(self, animated: true)
+    }
+    
 }
