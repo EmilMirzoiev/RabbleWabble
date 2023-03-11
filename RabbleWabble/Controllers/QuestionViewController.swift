@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol QuestionViewControllerDelegate: class {
+protocol QuestionViewControllerDelegate: AnyObject {
     // Would be called when the user presses the Cancel button.
     func questionViewController(_ viewController: QuestionViewController, didCancel questionGroup: QuestionGroup, at questionIndex: Int)
     // Would be called when the user completes all of the questions.
