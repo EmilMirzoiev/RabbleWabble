@@ -10,16 +10,21 @@ import UIKit
 protocol QuestionViewControllerDelegate: AnyObject {
     // Would be called when the user presses the Cancel button.
     func questionViewController(_ viewController: QuestionViewController,
-                                didCancel questionGroup: QuestionGroup,
-                                at questionIndex: Int)
+                                didCancel questionGroup: QuestionStrategy)
     // Would be called when the user completes all of the questions.
     func questionViewController(_ viewController: QuestionViewController,
-                                didComplete questionGroup: QuestionGroup)
+                                didComplete questionGroup: QuestionStrategy)
 }
 
 class QuestionViewController: UIViewController {
     
     public weak var delegate: QuestionViewControllerDelegate?
+    
+    public var questionStrategy: QuestionStrategy! {
+        didSet {
+            navigationItem.title = questionStrategy.title
+        }
+    }
     
     public var questionGroup: QuestionGroup! {
         didSet {
@@ -47,9 +52,9 @@ class QuestionViewController: UIViewController {
     }()
     
     public override func viewDidLoad() {
-      super.viewDidLoad()
-      setupCancelButton()
-      showQuestion()
+        super.viewDidLoad()
+        setupCancelButton()
+        showQuestion()
     }
     
     private func setupCancelButton() {
@@ -61,20 +66,19 @@ class QuestionViewController: UIViewController {
                                                            target: self,
                                                            action: action)
     }
-        
-    @objc private func handleCancelPressed(sender: UIBarButtonItem) {
-      delegate?.questionViewController(self, didCancel: questionGroup, at: questionIndex)
+    
+    @objc private func handleCancelPressed(
+      sender: UIBarButtonItem) { delegate?.questionViewController(self, didCancel: questionStrategy)
     }
     
     private func showQuestion() {
-        let question = questionGroup.questions[questionIndex]
+        let question = questionStrategy.currentQuestion()
         questionView.answerLabel.text = question.answer
         questionView.promptLabel.text = question.prompt
         questionView.hintLabel.text = question.hint
         questionView.answerLabel.isHidden = true
         questionView.hintLabel.isHidden = true
-        questionIndexItem.title = "\(questionIndex + 1)/" +
-        "\(questionGroup.questions.count)"
+        questionIndexItem.title = questionStrategy.questionIndexTitle()
     }
     
     @IBAction func toggleAnswerLabels(_ sender: Any) {
@@ -84,27 +88,30 @@ class QuestionViewController: UIViewController {
         !questionView.hintLabel.isHidden
     }
     
-    // 1
     @IBAction func handleCorrect(_ sender: Any) {
-        correctCount += 1
-        questionView.correctCountLabel.text = "\(correctCount)"
+        let question = questionStrategy.currentQuestion()
+        questionStrategy.markQuestionCorrect(question)
+        questionView.correctCountLabel.text = String(questionStrategy.correctCount)
         showNextQuestion()
     }
-    // 2
+    
     @IBAction func handleIncorrect(_ sender: Any) {
-        incorrectCount += 1
-        questionView.incorrectCountLabel.text = "\(incorrectCount)"
+        let question = questionStrategy.currentQuestion()
+        questionStrategy.markQuestionIncorrect(question)
+        questionView.incorrectCountLabel.text = String(questionStrategy.incorrectCount)
         showNextQuestion()
     }
-    // 3
+    
     private func showNextQuestion() {
-        questionIndex += 1
-        guard questionIndex < questionGroup.questions.count else { endQuiz(); return }
+        guard questionStrategy.advanceToNextQuestion() else {
+            delegate?.questionViewController(self, didComplete: questionStrategy)
+            return
+        }
         showQuestion()
     }
     
     private func endQuiz() {
-        delegate?.questionViewController(self, didComplete: questionGroup)
+//        delegate?.questionViewController(self, didComplete: questionGroup)
         let alertController = UIAlertController(title: "Quiz Complete",
                                                 message: "You have answered all the questions in the quiz",
                                                 preferredStyle: .alert)
