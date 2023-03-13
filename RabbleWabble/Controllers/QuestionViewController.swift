@@ -111,7 +111,6 @@ class QuestionViewController: UIViewController {
     }
     
     private func endQuiz() {
-//        delegate?.questionViewController(self, didComplete: questionGroup)
         let alertController = UIAlertController(title: "Quiz Complete",
                                                 message: "You have answered all the questions in the quiz",
                                                 preferredStyle: .alert)
