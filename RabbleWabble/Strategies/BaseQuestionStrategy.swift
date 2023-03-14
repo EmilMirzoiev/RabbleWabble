@@ -37,6 +37,7 @@ public class BaseQuestionStrategy: QuestionStrategy {
         return questions[questionIndex]
     }
     public func advanceToNextQuestion() -> Bool {
+        try? questionGroupCaretaker.save()
         guard questionIndex + 1 < questions.count else {
             return false
         }

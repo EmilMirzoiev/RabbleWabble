@@ -19,15 +19,23 @@ public class SelectQuestionGroupViewController: UIViewController {
     private let appSettings = AppSettings.shared
     private let questionGroupCaretaker = QuestionGroupCaretaker()
     private var questionGroups: [QuestionGroup] {
-      return questionGroupCaretaker.questionGroups
+        return questionGroupCaretaker.questionGroups
     }
     
     private var selectedQuestionGroup: QuestionGroup! {
-      get {
-          return questionGroupCaretaker.selectedQuestionGroup
-      } set {
-          questionGroupCaretaker.selectedQuestionGroup = newValue
-      }
+        get {
+            return questionGroupCaretaker.selectedQuestionGroup
+        } set {
+            questionGroupCaretaker.selectedQuestionGroup = newValue
+        }
+    }
+    
+    // MARK: - View Lifecycle
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        questionGroups.forEach {
+            print("\($0.title): " + "correctCount \($0.score.correctCount), " + "incorrectCount \($0.score.incorrectCount)")
+        }
     }
     
 }
